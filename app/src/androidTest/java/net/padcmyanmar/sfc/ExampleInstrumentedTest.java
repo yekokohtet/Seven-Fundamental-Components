@@ -1,4 +1,4 @@
-package net.padcmyanmar.seven_fundamental_components;
+package net.padcmyanmar.sfc;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

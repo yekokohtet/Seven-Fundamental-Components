@@ -1,4 +1,4 @@
-package net.padcmyanmar.seven_fundamental_components;
+package net.padcmyanmar.sfc;
 
 import org.junit.Test;
 
