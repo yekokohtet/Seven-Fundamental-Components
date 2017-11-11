@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Seven-Fundamental-Components</string>
     <string name="action_settings">Settings</string>
+    <string name="dummy_news">ဧရာဝတီတိုင်းဒေသကြီးအတွင်း မိုးစပါးများ ရိတ်သိမ်းကာ စပါးစတင်ပေါ်ချိန်ဖြစ်သော်လည်း ဝယ်လိုအားများနေသောကြောင့် ဒေသတွင်းစပါးဈေးနှင့် ဆန်ဈေးနှုန်းများ မြင့်တက်လျက်ရှိကြောင်း ဆန်စပါးရောင်းဝယ်ရေး လုပ်ငန်းရှင်များထံမှ</string>
+    <string name="btn_comment_news">Comment</string>
+    <string name="btn_send_to_news">Send To</string>
 </resources>
