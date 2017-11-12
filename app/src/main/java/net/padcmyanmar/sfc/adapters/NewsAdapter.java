@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.padcmyanmar.sfc.R;
+import net.padcmyanmar.sfc.delegates.NewsItemDelegate;
 import net.padcmyanmar.sfc.viewholders.NewsViewHolder;
 
 /**
@@ -16,15 +17,18 @@ import net.padcmyanmar.sfc.viewholders.NewsViewHolder;
 public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
 
     private LayoutInflater mLayoutInflater;
+    private NewsItemDelegate mNewsItemDelegate;
 
-    public NewsAdapter(Context context) {
+    public NewsAdapter(Context context, NewsItemDelegate newsItemDelegate) {
+        super();
         mLayoutInflater = LayoutInflater.from(context);
+        mNewsItemDelegate = newsItemDelegate;
     }
 
     @Override
     public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View newsItemView = mLayoutInflater.inflate(R.layout.view_item_news, parent, false);
-        return new NewsViewHolder(newsItemView);
+        return new NewsViewHolder(newsItemView, mNewsItemDelegate);
     }
 
     @Override
