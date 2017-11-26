@@ -3,11 +3,11 @@ package net.padcmyanmar.sfc.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +15,9 @@ import android.view.View;
 
 import net.padcmyanmar.sfc.R;
 import net.padcmyanmar.sfc.adapters.NewsAdapter;
+import net.padcmyanmar.sfc.components.EmptyViewPod;
+import net.padcmyanmar.sfc.components.SmartRecyclerView;
+import net.padcmyanmar.sfc.components.SmartScrollListener;
 import net.padcmyanmar.sfc.delegates.NewsItemDelegate;
 
 import butterknife.BindView;
@@ -24,6 +27,14 @@ public class NewsListActivity extends AppCompatActivity implements NewsItemDeleg
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
+    @BindView(R.id.rv_news)
+    SmartRecyclerView rvNews;
+
+    @BindView(R.id.vp_empty_news)
+    EmptyViewPod vpEmptyNews;
+
+    private SmartScrollListener mSmartScrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +55,19 @@ public class NewsListActivity extends AppCompatActivity implements NewsItemDeleg
             }
         });
 
-        RecyclerView rvNews = findViewById(R.id.rv_news);
+        rvNews.setEmptyView(vpEmptyNews);
         rvNews.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         NewsAdapter newsAdapter = new NewsAdapter(getApplicationContext(), this);
         rvNews.setAdapter(newsAdapter);
+
+        mSmartScrollListener = new SmartScrollListener(new SmartScrollListener.OnSmartScrollListener() {
+            @Override
+            public void onListEndReach() {
+                Snackbar.make(rvNews, "This is all the data for Now.", Snackbar.LENGTH_LONG).show();
+            }
+        });
+
+        rvNews.addOnScrollListener(mSmartScrollListener);
 
     }
 

@@ -35,6 +35,6 @@ public class NewsRelatedAdapter extends RecyclerView.Adapter<NewsRelatedViewHold
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 5;
     }
 }
